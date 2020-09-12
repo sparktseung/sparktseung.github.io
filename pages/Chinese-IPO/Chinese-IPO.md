@@ -367,249 +367,390 @@ ipo_df['prob_all'].describe()
 
 
 
+There are obviously some outliers, we will exclude those from our the plots. Overall, the success probabilty is overwhelmingly low. The vast majority of online applications would be uncessessful, while the odds are better in some offline cases. For an average investor, I'd consider getting a successful application as a rare event.
+
 
 ```python
-plt.hist(x = ipo_df['prob_online'], bins = 100, range = (0, 10))
+plt.hist(x = ipo_df['prob_online'], bins = 100, range = (0, 6));
+plt.title('Histogram of Success Probability (%), Online');
 ```
 
 
-
-
-    (array([840.,  53.,  80., 110., 123., 115., 105.,  69.,  56.,  45.,  40.,
-             25.,  31.,  20.,  26.,  20.,  14.,  14.,  12.,   7.,  15.,   6.,
-             15.,   9.,   9.,   9.,   2.,   5.,   5.,   2.,   3.,   4.,   2.,
-              1.,   2.,   1.,   2.,   1.,   0.,   2.,   0.,   1.,   0.,   1.,
-              1.,   0.,   1.,   0.,   2.,   1.,   0.,   0.,   0.,   0.,   0.,
-              1.,   0.,   1.,   1.,   1.,   1.,   1.,   0.,   1.,   1.,   0.,
-              0.,   0.,   0.,   0.,   0.,   1.,   1.,   1.,   0.,   1.,   0.,
-              0.,   1.,   0.,   1.,   1.,   0.,   1.,   0.,   0.,   0.,   1.,
-              1.,   1.,   0.,   0.,   1.,   0.,   0.,   1.,   2.,   0.,   0.,
-              0.]),
-     array([ 0. ,  0.1,  0.2,  0.3,  0.4,  0.5,  0.6,  0.7,  0.8,  0.9,  1. ,
-             1.1,  1.2,  1.3,  1.4,  1.5,  1.6,  1.7,  1.8,  1.9,  2. ,  2.1,
-             2.2,  2.3,  2.4,  2.5,  2.6,  2.7,  2.8,  2.9,  3. ,  3.1,  3.2,
-             3.3,  3.4,  3.5,  3.6,  3.7,  3.8,  3.9,  4. ,  4.1,  4.2,  4.3,
-             4.4,  4.5,  4.6,  4.7,  4.8,  4.9,  5. ,  5.1,  5.2,  5.3,  5.4,
-             5.5,  5.6,  5.7,  5.8,  5.9,  6. ,  6.1,  6.2,  6.3,  6.4,  6.5,
-             6.6,  6.7,  6.8,  6.9,  7. ,  7.1,  7.2,  7.3,  7.4,  7.5,  7.6,
-             7.7,  7.8,  7.9,  8. ,  8.1,  8.2,  8.3,  8.4,  8.5,  8.6,  8.7,
-             8.8,  8.9,  9. ,  9.1,  9.2,  9.3,  9.4,  9.5,  9.6,  9.7,  9.8,
-             9.9, 10. ]),
-     <BarContainer object of 100 artists>)
-
-
-
-
     
-![svg](Chinese-IPO_files/Chinese-IPO_17_1.svg)
+![svg](Chinese-IPO_files/Chinese-IPO_18_0.svg)
     
 
 
 
 ```python
-ipo_df.head()
+plt.hist(x = ipo_df['prob_offline'], bins = 100, range = (0, 20));
+plt.title('Histogram of Success Probability (%), Offline');
+```
+
+
+    
+![svg](Chinese-IPO_files/Chinese-IPO_19_0.svg)
+    
+
+
+
+```python
+plt.hist(x = ipo_df['prob_all'], bins = 100, range = (0, 15));
+plt.title('Histogram of Success Probability (%), Overall');
+```
+
+
+    
+![svg](Chinese-IPO_files/Chinese-IPO_20_0.svg)
+    
+
+
+## An unexpected lesson of history
+
+Out of curiosity, I also plotted the probabilities against the listing data of stocks. There are two noticeable gaps without any new IPO: the entire year of 2013 and the end of 2015.
+
+
+```python
+plt.plot_date(ipo_df['list_date'], ipo_df['prob_online'], marker = '.');
+plt.title('Trend of Success Probability (%), Online');
+```
+
+
+    
+![svg](Chinese-IPO_files/Chinese-IPO_22_0.svg)
+    
+
+
+
+```python
+plt.plot_date(ipo_df['list_date'], ipo_df['prob_offline'], marker = '.');
+plt.title('Trend of Success Probability (%), Offline');
+```
+
+
+    
+![svg](Chinese-IPO_files/Chinese-IPO_23_0.svg)
+    
+
+
+
+```python
+plt.plot_date(ipo_df['list_date'], ipo_df['prob_all'], marker = '.');
+plt.title('Trend of Success Probability (%), Overall');
+```
+
+
+    
+![svg](Chinese-IPO_files/Chinese-IPO_24_0.svg)
+    
+
+
+I suspect this might be due to the *[socialist charasteristics](https://en.wikipedia.org/wiki/Socialism_with_Chinese_characteristics)* (社会主义特色) of the Chinese market. After a bit of search on the Internet, I have learned a bit about the history of the Chinese stock market.
+
+According to some news reports ([1](https://stock.gucheng.com/201606/3173448_2.shtml) and [2](http://finance.sina.com.cn/stock/y/20150704/195622592273.shtml)), there have been 9 halts of IPO in the past. What we see in the plots above are the latest two occurences.
+* Nov 16, 2012 ~ Dec 30, 2013: The Chinese stock market has been declining for 3 years in a row, while western countries are recovering from the 2008 financial crisis (see [this chart of comparison](http://schrts.co/AxGcQBMZ)). The government decides to halt IPO, although there is no official statement of the rationality (I can't really see why).
+* July 4, 2015 ~ Nov 6, 2015: The Shanghai Composite Index has dropped around 25% in just 20 days (see [this chart](http://schrts.co/RJeAxkFc)). The government halts all IPOs in an attempt to boost the market (again, I don't see why they think this would work).
+
+There were more halts prior to these two (e.g. as you might have guessed, there was one during the financial crisis). While I will not delve into the details here, they are certainly quite interesting to read about. Such historical facts also shed lights on the influence of the government on the Chinese financial market, which contracts the relatively freer markets in the west.
+
+You might also have noticed that the success probabilities appear significantly lower after year 2014. I have not quite figured out why, even after a lot of search on the Internet. Never mind - I will just let this slip by and assume it probably also have something to do with government intervention. The key takeaway is that **getting shares from Chinese IPOs can be effectively considered as a rare event only for the luckiest few**. 
+
+## Are Chinese IPOs profitable?
+
+Now let's turn to profitability, which is actually more important. Let's assume the IPO investor sells all shares at the closing price on the first day of public trading. I will conduct the same set of analysis as above. It seems that most IPOs will generate quite attractive returns on the first day of trading. Meanwhile, there could also be a sizable loss of 20%.
+
+
+```python
+# Summary: return
+ipo_df['return_firstday'].describe()
 ```
 
 
 
 
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>ticker</th>
-      <th>name</th>
-      <th>price_issue</th>
-      <th>price_latest</th>
-      <th>prob_online</th>
-      <th>sub_size_online</th>
-      <th>subs_online</th>
-      <th>over_online</th>
-      <th>prob_offline</th>
-      <th>sub_size_offline</th>
-      <th>subs_offline</th>
-      <th>over_offline</th>
-      <th>size_total</th>
-      <th>list_premium</th>
-      <th>return_firstday</th>
-      <th>return_ipo</th>
-      <th>list_date</th>
-      <th>market</th>
-      <th>prob_all</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>54</th>
-      <td>603109</td>
-      <td>神驰机电</td>
-      <td>18.38</td>
-      <td>26.48</td>
-      <td>0.03515</td>
-      <td>93892836000</td>
-      <td>12131674</td>
-      <td>2844.98</td>
-      <td>0.011563</td>
-      <td>31714300000</td>
-      <td>7312</td>
-      <td>8648.57</td>
-      <td>36670000</td>
-      <td>0.2002</td>
-      <td>0.4402</td>
-      <td>0.03</td>
-      <td>2019-12-31</td>
-      <td>sh</td>
-      <td>0.035136</td>
-    </tr>
-    <tr>
-      <th>55</th>
-      <td>603995</td>
-      <td>甬金股份</td>
-      <td>22.52</td>
-      <td>33.26</td>
-      <td>0.04462</td>
-      <td>116334072000</td>
-      <td>11366524</td>
-      <td>2241.37</td>
-      <td>0.012767</td>
-      <td>45171000000</td>
-      <td>6986</td>
-      <td>7832.67</td>
-      <td>57670000</td>
-      <td>0.1998</td>
-      <td>0.4401</td>
-      <td>0.02</td>
-      <td>2019-12-24</td>
-      <td>sh</td>
-      <td>0.044600</td>
-    </tr>
-    <tr>
-      <th>56</th>
-      <td>601512</td>
-      <td>中新集团</td>
-      <td>9.67</td>
-      <td>11.56</td>
-      <td>0.08831</td>
-      <td>152755117000</td>
-      <td>11257993</td>
-      <td>1132.35</td>
-      <td>0.039017</td>
-      <td>38416500000</td>
-      <td>6439</td>
-      <td>2562.98</td>
-      <td>149890000</td>
-      <td>0.1996</td>
-      <td>0.4395</td>
-      <td>0.06</td>
-      <td>2019-12-20</td>
-      <td>sh</td>
-      <td>0.088282</td>
-    </tr>
-    <tr>
-      <th>57</th>
-      <td>603053</td>
-      <td>成都燃气</td>
-      <td>10.45</td>
-      <td>14.47</td>
-      <td>0.06641</td>
-      <td>120466360000</td>
-      <td>10990417</td>
-      <td>1505.81</td>
-      <td>0.022430</td>
-      <td>39629800000</td>
-      <td>7226</td>
-      <td>4458.30</td>
-      <td>88890000</td>
-      <td>0.2000</td>
-      <td>0.4402</td>
-      <td>0.06</td>
-      <td>2019-12-17</td>
-      <td>sh</td>
-      <td>0.066381</td>
-    </tr>
-    <tr>
-      <th>58</th>
-      <td>601658</td>
-      <td>邮储银行</td>
-      <td>5.50</td>
-      <td>4.58</td>
-      <td>1.25915</td>
-      <td>205383291000</td>
-      <td>8882002</td>
-      <td>79.42</td>
-      <td>4.773505</td>
-      <td>27087900000</td>
-      <td>2399</td>
-      <td>20.95</td>
-      <td>5947988200</td>
-      <td>0.0182</td>
-      <td>0.0200</td>
-      <td>0.02</td>
-      <td>2019-12-10</td>
-      <td>sh</td>
-      <td>1.260099</td>
-    </tr>
-  </tbody>
-</table>
-</div>
+    count    1942.000000
+    mean        0.394821
+    std         0.270328
+    min        -0.231600
+    25%         0.364350
+    50%         0.439900
+    75%         0.440200
+    max         6.267400
+    Name: return_firstday, dtype: float64
 
 
 
 
 ```python
-ipo_df['prob_online'][ipo_df['prob_online']>20]
+plt.hist(x = ipo_df['return_firstday'], bins = 100, range = (-0.5, 3));
+plt.title('Histogram of First-Day Return');
 ```
 
 
+    
+![svg](Chinese-IPO_files/Chinese-IPO_31_0.svg)
+    
 
 
-    656     24.68644
-    664     21.56808
-    1088    65.52084
-    Name: prob_online, dtype: float64
+There is a peak around 40% of return. The following plot of `return_firstday` against `list_date` reveals a noticeable pattern: the "magic" number of return is 44%, and almost all of them occur starting from 2014.
 
+
+```python
+plt.plot_date(ipo_df['list_date'], ipo_df['return_firstday'], marker = '.');
+plt.title('Trend of First-Day Return');
+```
+
+
+    
+![svg](Chinese-IPO_files/Chinese-IPO_33_0.svg)
+    
 
 
 
 ```python
-ipo_df['prob_offline'][ipo_df['prob_offline']>60]
+ipo_df['return_firstday'].mode()
 ```
 
 
 
 
-    632     66.666667
-    634     70.000000
-    680     63.391272
-    1078    90.909090
-    1868    66.670000
-    Name: prob_offline, dtype: float64
+    0    0.44
+    dtype: float64
 
+
+
+Again, this is due to a policy implemented by the government (see [here](https://stock.gucheng.com/201906/3742608.shtml)): trading for an IPO stock is halted after an increase of 44% (or a decrease of 36%, albeit not present in this data set) within a single day.
+
+With this in mind, let's see which are the best-performing IPOs of the decade (obviously, they are all pre-2014). The following stocks will double the initial investment (displayed from highest return to lowest return).
+
+
+```python
+goodstock = ipo_df[ ipo_df['return_firstday'] >=1 ]
+with pd.option_context('display.max_rows', None, 'display.max_columns', goodstock.shape[1]):
+    print(goodstock[['ticker', 'name', 'return_firstday']].sort_values(by = ['return_firstday'], ascending = False))
+```
+
+    	  ticker  name      return_firstday
+    982   002703  浙江世宝           6.2674
+    1264  002388  新亚制程           2.7533
+    1191  002468  申通快递           2.3504
+    613   603993  洛阳钼业           2.2100
+    1947  300239  东宝生物           1.9889
+    1159  002507  涪陵榨菜           1.9164
+    1199  002460  赣锋锂业           1.8599
+    1198  002461  珠江啤酒           1.7724
+    1193  002466  天齐锂业           1.7683
+    1263  002389  航天彩虹           1.7267
+    1268  002384  东山精密           1.6758
+    1144  002524  光正集团           1.6153
+    2078  300106  西部牧业           1.5193
+    1075  002600  领益智造           1.4938
+    1269  002383  合众思壮           1.4730
+    1948  300238  冠昊生物           1.4676
+    626   603002  宏昌电子           1.3778
+    1311  002338  奥普光电           1.3636
+    1274  002378  章源钨业           1.3046
+    2068  300116  坚瑞沃能           1.2788
+    1052  002624  完美世界           1.2393
+    1154  002514  宝馨科技           1.2304
+    1189  002471  中超控股           1.2162
+    2075  300109   新开源           1.2000
+    2112  300070   碧水源           1.2000
+    2082  300101  振芯科技           1.1847
+    1913  300272  开能健康           1.1826
+    685   601177  杭齿前进           1.1785
+    1288  002364  中恒电气           1.1655
+    1265  002387   维信诺           1.1459
+    1195  002464  众应互联           1.0774
+    1284  002368  太极股份           1.0762
+    1077  002598  山东章鼓           1.0590
+    617   603766  隆鑫通用           1.0304
+    1230  002428  云南锗业           1.0200
+    
+
+Meanwhile, the following stocks will some loss on the first day (displayed from worst return to slighly better ones). I have to say, there are not quite a lot of them.
+
+
+```python
+badstock = ipo_df[ ipo_df['return_firstday'] <=0]
+with pd.option_context('display.max_rows', None, 'display.max_columns', badstock.shape[1]):
+    print(badstock[['ticker', 'name', 'return_firstday']].sort_values(by = ['return_firstday'], ascending = True))
+```
+
+    	  ticker  name     return_firstday
+    664   601258  ST庞大          -0.2316
+    1028  002651  利君股份          -0.1688
+    2020  300165  天瑞仪器          -0.1668
+    1881  300305  裕兴股份          -0.1650
+    1906  300281  金明精机          -0.1576
+    1096  002577  雷柏科技          -0.1555
+    1849  300337  银邦股份          -0.1480
+    674   601700  风范股份          -0.1440
+    2018  300167   迪威迅          -0.1420
+    1131  002540  亚太科技          -0.1375
+    1880  300307  慈星股份          -0.1366
+    2019  300166  东方国信          -0.1339
+    658   601566   九牧王          -0.1305
+    1132  002539  云图控股          -0.1263
+    2017  300168  万达信息          -0.1214
+    1062  002614   奥佳华          -0.1192
+    1090  002583   海能达          -0.1181
+    1976  300209  天泽信息          -0.1179
+    1088  002585  双星新材          -0.1145
+    663   601218  吉鑫科技          -0.1124
+    1086  002588   史丹利          -0.1123
+    1031  002648  卫星石化          -0.1088
+    1833  300351  永贵电器          -0.1077
+    1907  300280  紫天科技          -0.1018
+    1100  002572   索菲亚          -0.1000
+    2101  300082  奥克股份          -0.0991
+    1972  300213  佳讯飞鸿          -0.0986
+    1879  300306  远方信息          -0.0973
+    993   002690  美亚光电          -0.0971
+    1013  002667  鞍重股份          -0.0948
+    1029  002649  博彦科技          -0.0941
+    622   601339  百隆东方          -0.0934
+    1097  002576  通达动力          -0.0921
+    999   002685  华东重机          -0.0911
+    1973  300212   易华录          -0.0906
+    1057  002620  瑞和股份          -0.0893
+    1093  002580  圣阳股份          -0.0888
+    1842  300344  太空智造          -0.0887
+    645   601633  长城汽车          -0.0885
+    988   002695   煌上煌          -0.0883
+    646   601677  明泰铝业          -0.0870
+    656   601010  文峰股份          -0.0830
+    1099  002573  清新环境          -0.0829
+    983   002702  海欣食品          -0.0800
+    1133  002538   司尔特          -0.0792
+    998   002682  龙洲股份          -0.0792
+    1030  002647  仁东控股          -0.0781
+    623   601965  中国汽研          -0.0756
+    1245  002408  齐翔腾达          -0.0755
+    1990  300195  长荣股份          -0.0745
+    1980  300205  天喻信息          -0.0740
+    1954  300232  洲明科技          -0.0738
+    1236  002419  天虹股份          -0.0735
+    1107  002563  森马服饰          -0.0730
+    630   603001  奥康国际          -0.0725
+    670   601799  星宇股份          -0.0711
+    1977  300208  青岛中程          -0.0700
+    620   603008   喜临门          -0.0672
+    625   603366  日出东方          -0.0670
+    1128  002543  万和电气          -0.0657
+    1130  002541  鸿路钢构          -0.0656
+    1247  002406  远东传动          -0.0643
+    1845  300342  天银机电          -0.0635
+    619   603077  和邦生物          -0.0617
+    632   601012  隆基股份          -0.0595
+    1963  300223  北京君正          -0.0591
+    2100  300083   创世纪          -0.0567
+    657   601311  骆驼股份          -0.0565
+    2097  300086  康芝药业          -0.0562
+    644   601996  丰林集团          -0.0550
+    1101  002571  德力股份          -0.0545
+    655   601567  三星医疗          -0.0545
+    1014  002665  首航高科          -0.0541
+    1213  002444  巨星科技          -0.0534
+    1861  300324  旋极信息          -0.0522
+    1856  300329  海伦钢琴          -0.0519
+    1217  002440  闰土股份          -0.0513
+    1961  300225   金力泰          -0.0507
+    1246  002407   多氟多          -0.0503
+    1981  300204   舒泰神          -0.0501
+    1971  300214  日科化学          -0.0500
+    1027  002653   海思科          -0.0490
+    1058  002616  长青集团          -0.0472
+    673   601137  博威合金          -0.0463
+    1987  300198  纳川股份          -0.0458
+    1991  300194  福安药业          -0.0423
+    662   601113  ST华鼎          -0.0414
+    2025  300160  秀强股份          -0.0406
+    1112  002559  亚威股份          -0.0400
+    1844  300338  开元股份          -0.0400
+    691   601000   唐山港          -0.0390
+    1992  300193  佳士科技          -0.0374
+    1860  300327  中颖电子          -0.0368
+    1009  002672  东江环保          -0.0360
+    2015  300170  汉得信息          -0.0359
+    1964  300222  科大智能          -0.0355
+    686   601018   宁波港          -0.0351
+    1841  300345  华民股份          -0.0343
+    2094  300080  易成新能          -0.0325
+    697   601106  中国一重          -0.0316
+    1216  002441   众业达          -0.0306
+    1986  300199  翰宇药业          -0.0295
+    1129  002542  中化岩土          -0.0292
+    1003  002676  顺威股份          -0.0272
+    1059  002617  露笑科技          -0.0250
+    1083  002591  恒大高新          -0.0250
+    1238  002416   爱施德          -0.0244
+    2000  300185  通裕重工          -0.0244
+    1243  002410   广联达          -0.0226
+    1864  300325  德威新材          -0.0218
+    1211  002414  高德红外          -0.0204
+    1903  300284   苏交科          -0.0195
+    1249  002404  嘉欣丝绸          -0.0191
+    1301  002348  高乐股份          -0.0187
+    699   601179  中国西电          -0.0139
+    1965  300221  银禧科技          -0.0133
+    1921  300263  隆华科技          -0.0130
+    1877  300309  吉艾科技          -0.0065
+    2089  300094  国联水产          -0.0063
+    1865  300323  华灿光电          -0.0040
+    1214  002443  金洲管道          -0.0018
+    1102  002570   贝因美          -0.0005
+    
+
+Let's also take a look at the movement of the first-day price by plotting `return_firstday` against `list_premium`. The pattern is quite clear: if a stock opens above its IPO price, most likely it will close even higher on the first day of trading (points above the red line).
+
+
+```python
+plt.scatter(ipo_df['list_premium'], ipo_df['return_firstday'], marker = '.');
+plt.axline((0, 0), (1, 1), linewidth=2, color='r');
+plt.title('Firstday Close Return vs. Firstday Open Return');
+```
+
+
+    
+![svg](Chinese-IPO_files/Chinese-IPO_41_0.svg)
+    
+
+
+Finally, we will plot `return_firstday` against the IPO price `price_issue` and total value of issued shares `price_issue * size_total`, i.e. the market capitalization. It seems that exceptional first-day returns are mostly generated by cheaper stocks / small-cap companies.
+
+
+```python
+plt.scatter(ipo_df['price_issue'], ipo_df['return_firstday'], marker = '.');
+plt.title('Firstday Close Return vs. IPO Price');
+```
+
+
+    
+![svg](Chinese-IPO_files/Chinese-IPO_43_0.svg)
+    
 
 
 
 ```python
-ipo_df['prob_all'][ipo_df['prob_all']>60]
+plt.scatter(ipo_df['price_issue']*ipo_df['size_total'], ipo_df['return_firstday'], marker = '.');
+plt.title('Firstday Close Return vs. Market Cap');
 ```
 
 
+    
+![svg](Chinese-IPO_files/Chinese-IPO_44_0.svg)
+    
 
 
-    1088    65.508859
-    Name: prob_all, dtype: float64
+The message is that **IPOs are quite profitable even if you sell it only on the first day of trading**. Anecdotal internet posts also suggest that, if the stock increases 44% on the first day, the following few trading days are very likely to be also bullish. This initial momentum certainly makes IPOs in the Chinese stock market extremely attrative, rendering them effectively "free lottery tickets" (since you will most likely end up with good profits). No wonder so many investors flock to IPOs as soon as those announcements come out! 
 
+## Final remarks
 
+Even though this is not a rich data set, there are certainly a lot of interesting questions to explore. For example:
+* What are the 7-day, 1-year and up-to-date return of these stocks since IPO? Are people just speculating on the initial buying craze? How many of these stocks are really suitable for long-term investment?
+* How about stock IPOs on the US market? I know it's a free market, and I have seen quite a number of IPOs that just drop and drop since the very first day of trading. It is definitely interesting to make a comparison between these two vastly different markets.
+* Just a simple data analysis like this reveals the influence of governmemt regulations on the stock market. It could be interesting to qualitatively examine this topic (but this is beyond my strong suit).
+* Unfortunately , we don't have access to more granular data sets, e.g. the size of each individual IPO application. With richer information, a more interesting study could be conducted.
+
+Still, the simple analyses above have already answered my initial questions: **Yes, IPOs in the Chinese stock market are likely to bring you good money, but you are unlikely to get a chance in the first place** - the good old rule of supply and demand!
