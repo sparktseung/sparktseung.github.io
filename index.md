@@ -1,10 +1,7 @@
 ---
 layout: default
+title: Work
 ---
-
-# Work
-
-This page contains a complete collection of my work, serious or not.
 
 # Acedemic Stuff
 
