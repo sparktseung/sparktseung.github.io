@@ -12,6 +12,8 @@ About two years ago, I started to have some extra money for investing. After a f
 
 I have been all content with that until a friend of mine mentioned the unbelievably high return on purchasing the Initial Public Offerings (IPO) of Chinese stocks. He claimed that, if you are lucky enough to be assigned some units during an IPO, the return on the first day of public trading is quite significant (e.g. 100%+). However, it is generally quite difficult to obtain those IPOs in the first place, so it is almost like buying a lottery.
 
+!png(Chinese-IPO_files/chat.png)
+
 Unfamiliar with, and intentially staying away from, the Chinese stock market, I was quite suspicious at first, but a quick search on the Internet has my confidence shaken. Therefore, being a student in statistics, I naturally started to dig into a pool of data, trying to find out if one can make some big money from Chinese stock IPOs. More specifically, I would like to see if one can make profits by obtaining stocks from IPOs and then selling them shortly after the public trading starts.
 
 ## Getting the data
@@ -451,7 +453,7 @@ According to some news reports ([1](https://stock.gucheng.com/201606/3173448_2.s
 * Nov 16, 2012 ~ Dec 30, 2013: The Chinese stock market has been declining for 3 years in a row, while western countries are recovering from the 2008 financial crisis (see [this chart of comparison](http://schrts.co/AxGcQBMZ)). The government decides to halt IPO, although there is no official statement of the rationality (I can't really see why).
 * July 4, 2015 ~ Nov 6, 2015: The Shanghai Composite Index has dropped around 25% in just 20 days (see [this chart](http://schrts.co/RJeAxkFc)). The government halts all IPOs in an attempt to boost the market (again, I don't see why they think this would work).
 
-There were more halts prior to these two (e.g. as you might have guessed, there was one during the financial crisis). While I will not delve into the details here, they are certainly quite interesting to read about. Such historical facts also shed lights on the influence of the government on the Chinese financial market, which contracts the relatively freer markets in the west.
+There were more halts prior to these two (e.g. as you might have guessed, there was one during the financial crisis). While I will not delve into the details here, they are certainly quite interesting to read about. Such historical facts also shed lights on the influence of the government on the Chinese financial market, which contrasts the relatively freer markets in the west.
 
 You might also have noticed that the success probabilities appear significantly lower after year 2014. I have not quite figured out why, even after a lot of search on the Internet. Never mind - I will just let this slip by and assume it probably also have something to do with government intervention. The key takeaway is that **getting shares from Chinese IPOs can be effectively considered as a rare event only for the luckiest few**. 
 
