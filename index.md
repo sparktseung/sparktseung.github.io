@@ -1,6 +1,6 @@
 ---
 layout: default
-page.title: Work
+title: Work
 ---
 
 # Acedemic Stuff
