@@ -8,4 +8,4 @@ This is a normal paragraph following a header. GitHub is a code hosting platform
 
 # Just for Fun
 
-test
+[test](./pages/Chinese-IPO/Chinese-IPO.html)
