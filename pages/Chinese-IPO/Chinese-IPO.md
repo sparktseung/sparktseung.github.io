@@ -18,7 +18,7 @@ Unfamiliar with, and intentially staying away from, the Chinese stock market, I 
 
 ## Getting the data
 
-There are not a lot of data source available for the issue prices of IPOs in the Chinese market. The best I can find is the `akshare` package in Python, which in turn pulls IPO data from [eastmoney](http://data.eastmoney.com/xg/xg/dxsyl.html), a Chinese stock broker. They have three datasets of IPO, `sh` for (mostly) bluechip stocks traded on the Shanghai Stock Exchange, and `zxb`/`cyb` for smaller companies traded on the Shenzhen Stock Exchange.
+There are not a lot of data sources available for the issue prices of IPOs in the Chinese market. The best I can find is the `akshare` package in Python, which in turn pulls IPO data from [eastmoney](http://data.eastmoney.com/xg/xg/dxsyl.html), a Chinese stock broker. They have three datasets of IPO, `sh` for (mostly) bluechip stocks traded on the Shanghai Stock Exchange, and `zxb`/`cyb` for smaller companies traded on the Shenzhen Stock Exchange.
 
 
 ```python
@@ -47,7 +47,7 @@ ipo_szcy_df = ak.stock_em_dxsyl(market="创业板")
     100%|██████████| 17/17 [00:07<00:00,  2.34it/s]
     
 
-The first few rows of the data set are shown below. After a quick view of the website tells that they have IPO data starting from year 2010. I will combine the three datasets, and change the column names in English. Since the datasets are frequently updated, we will focus on the decade of 2010-2019 only.
+The first few rows of the data set are shown below. A quick view of the website tells that they have IPO data starting from year 2010. I will combine the three datasets, and change the column names in English. Since the datasets are frequently updated, we will focus on the decade of 2010-2019 only.
 
 
 ```python
@@ -409,7 +409,7 @@ plt.title('Histogram of Success Probability (%), Overall');
 
 ## An unexpected lesson of history
 
-Out of curiosity, I also plotted the probabilities against the listing data of stocks. There are two noticeable gaps without any new IPO: the entire year of 2013 and the end of 2015.
+Out of curiosity, I also plotted the probabilities against the listing date of stocks. There are two noticeable gaps without any new IPO: the entire year of 2013 and the end of 2015.
 
 
 ```python
@@ -447,10 +447,10 @@ plt.title('Trend of Success Probability (%), Overall');
     
 
 
-I suspect this might be due to the *[socialist charasteristics](https://en.wikipedia.org/wiki/Socialism_with_Chinese_characteristics)* (社会主义特色) of the Chinese market. After a bit of search on the Internet, I have learned a bit about the history of the Chinese stock market.
+I suspect this might be due to the *[socialist charasteristics](https://en.wikipedia.org/wiki/Socialism_with_Chinese_characteristics)* (社会主义特色) of the Chinese capital market. After a bit of search on the Internet, I have learned a bit about the history of the Chinese stock market.
 
 According to some news reports ([1](https://stock.gucheng.com/201606/3173448_2.shtml) and [2](http://finance.sina.com.cn/stock/y/20150704/195622592273.shtml)), there have been 9 halts of IPO in the past. What we see in the plots above are the latest two occurences.
-* Nov 16, 2012 ~ Dec 30, 2013: The Chinese stock market has been declining for 3 years in a row, while western countries are recovering from the 2008 financial crisis (see [this chart of comparison](http://schrts.co/AxGcQBMZ)). The government decides to halt IPO, although there is no official statement of the rationality (I can't really see why).
+* Nov 16, 2012 ~ Dec 30, 2013: The Chinese stock market has been declining for 3 years in a row, while western countries are recovering from the 2008 financial crisis (see [this chart of comparison](http://schrts.co/AxGcQBMZ)). The government decides to halt IPO, although there is no official statement of the rationales behind (I can't really see why).
 * July 4, 2015 ~ Nov 6, 2015: The Shanghai Composite Index has dropped around 25% in just 20 days (see [this chart](http://schrts.co/RJeAxkFc)). The government halts all IPOs in an attempt to boost the market (again, I don't see why they think this would work).
 
 There were more halts prior to these two (e.g. as you might have guessed, there was one during the financial crisis). While I will not delve into the details here, they are certainly quite interesting to read about. Such historical facts also shed lights on the influence of the government on the Chinese financial market, which contrasts the relatively freer markets in the west.
@@ -459,7 +459,7 @@ You might also have noticed that the success probabilities appear significantly 
 
 ## Are Chinese IPOs profitable?
 
-Now let's turn to profitability, which is actually more important. Let's assume the IPO investor sells all shares at the closing price on the first day of public trading. I will conduct the same set of analysis as above. It seems that most IPOs will generate quite attractive returns on the first day of trading. Meanwhile, there could also be a sizable loss of 20%.
+Now let's turn to profitability, which is actually more important. Let's assume an IPO investors sells all shares at the closing price on the first day of public trading. I will conduct the same set of analysis as above. It seems that most IPOs will generate quite attractive returns on the first day of trading. Meanwhile, there could also be a sizable loss of 20%.
 
 
 ```python
@@ -523,7 +523,7 @@ ipo_df['return_firstday'].mode()
 
 Again, this is due to a policy implemented by the government (see [here](https://stock.gucheng.com/201906/3742608.shtml)): trading for an IPO stock is halted after an increase of 44% (or a decrease of 36%, albeit not present in this data set) within a single day.
 
-With this in mind, let's see which are the best-performing IPOs of the decade (obviously, they are all pre-2014). The following stocks will double the initial investment (displayed from highest return to lowest return).
+With this in mind, let's see which are the best-performing IPOs of the decade (obviously, they are all pre-2014). The following stocks will double the initial investment (displayed from highest to lowest return).
 
 
 ```python
@@ -570,7 +570,7 @@ with pd.option_context('display.max_rows', None, 'display.max_columns', goodstoc
     1230  002428  云南锗业           1.0200
     
 
-Meanwhile, the following stocks will some loss on the first day (displayed from worst return to slighly better ones). I have to say, there are not quite a lot of them.
+Meanwhile, the following stocks will yield some loss on the first day (displayed from worst return to slighly better ones). I have to say, there are not quite a lot of them.
 
 
 ```python
