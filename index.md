@@ -13,4 +13,4 @@ Working
 
 # Test
 
-[test link](https://github.com/sparktseung/LRMoE-Paper-Demo/README.md)
+[test link](https://github.com/sparktseung/LRMoE-Paper-Demo/tree/gh-page/README.md)
