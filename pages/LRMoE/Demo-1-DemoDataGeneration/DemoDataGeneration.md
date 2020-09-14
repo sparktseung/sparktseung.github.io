@@ -1,3 +1,8 @@
+---
+layout: default
+title: LRMoE: Demo Data Generation
+---
+
 Introduction
 ------------
 
