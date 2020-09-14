@@ -7,7 +7,7 @@ title: Work
 
 LRMoE:
 
-[Demo Data Generation](./pages/LRMoE/Demo-1-DemoDataGeneration/DemoDataGeneration.html)
+[Demo](https://work.sparktseung.com/LRMoE-Paper-Demo/)
 
 # Just for Fun
 
