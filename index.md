@@ -11,4 +11,4 @@ LRMoE:
 
 # Just for Fun
 
-* 2020-09-12: [Can you make big money on Chinese stock IPO?](https://github.com/sparktseung/Chinese-IPO/)
+* 2020-09-12: [Can you make big money on Chinese stock IPO?](https://work.sparktseung.com/Chinese-IPO/)
