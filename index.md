@@ -5,7 +5,9 @@ title: Work
 
 # Acedemic Stuff
 
-Working
+LRMoE:
+
+[Demo Data Generation](./pages/LRMoE/Demo-1-DemoDataGeneration/DemoDataGeneration.html)
 
 # Just for Fun
 
