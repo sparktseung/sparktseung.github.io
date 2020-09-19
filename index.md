@@ -11,7 +11,7 @@ LRMoE:
 
 # Some Personal Notes
 
-* 2020-09-18 [Running R on Google Cloud Platform](./pages/notes/cloudr/cloudr.html)
+* 2020-09-18: [Running R on Google Cloud Platform](./pages/notes/cloudr/cloudr.html)
 
 # Just for Fun
 
