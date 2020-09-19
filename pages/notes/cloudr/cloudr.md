@@ -14,7 +14,7 @@ Anyways, I will jot down some notes on the steps to get an environment ready for
 In this note, I will briefly go through the following key steps:
 
 * Creating a virtual machine (VM);
-* Connecting to the VM via Secured Shell (SSH) using [Bitvise](https://www.bitvise.com/);
+* Connecting to the VM via Secured Shell (SSH) using Bitvise;
 * Installing and configuring R on the VM; and
 * Running an R script in the background.
 
@@ -64,7 +64,7 @@ Installing and configuring R on the VM
 
 After connecting to the machine, I will need to install R. I referred to [here](https://www.datacamp.com/community/tutorials/installing-R-windows-mac-ubuntu). There are three command lines to run in the SSH terminal.
 
-The first command line updates the system package indexes - it basically checks what updates are available for currently installed packages in the linux virtual machine.
+The first command line updates the system package indexes - it basically checks what updates are available for currently installed packages on the Linux virtual machine.
 ```
 sudo apt update
 ```
@@ -139,7 +139,7 @@ Use the following command to change to another directory.
 cd desired-directory
 ```
 
-Once I have switched to the directory containing the R script, I will type the followinf command to run it (in the backgroud).
+Once I have switched to the directory containing the R script, I will type the following command to run it (in the backgroud).
 ```
 nohup R CMD BATCH somescript.R &
 ```
@@ -150,11 +150,11 @@ Whenever the R script requires loading some files/other scripts, it is crucial t
 setwd("desired working directory on the virtual machine")
 ```
 
-For my case, I used 15 cores for running some computation in parallel. On the Google Cloud console, it shows that aroud 93% of CPU is in use (since I have 16 CPUs in total). This is probably the most use I can get out of the current VM without crashing it. All I have to do is to patiently wait and come back later to retrieve the results - job well done!
+For my case, I used 15 cores for running some computation in parallel. On the Google Cloud console, it shows that aroud 93% of CPU is in use (since I have 16 CPUs in total). This is probably the most use I can get out of the current VM without crashing it. All I have to do is patiently wait and come back later to retrieve the results - job well done!
 
-After finishing everything, I will need to stop the virtual machine by clicking though the Google Cloud console. Otherwise, I would be charged whenever the VM is turned on.
+After finishing everything, I will need to stop the virtual machine by clicking some buttons on the Google Cloud console. Otherwise, I would be charged whenever the VM is turned on.
 
 Concluding remarks
 ---------------
 
-I have attempted multiple times to set up an R environment on GCP, but this time is probably the least troublesome. Meanwhile it still took around one hour, most of which was spent on setting up the public key for secured connection. Therefore, I write down these notes in case I should repeat the same procedure. Hopefully, it will take less time in the future, and I can avoid all the mistakes previously made.
+I have attempted multiple times to set up an R environment on GCP, but this time is probably the least troublesome. Still, it took around one hour, most of which was spent on setting up the public key for secured connection. Therefore, I write down these notes in case I should repeat the same procedure. Hopefully, it will take less time in the future, and I can avoid all the mistakes previously made.
