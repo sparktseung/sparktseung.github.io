@@ -11,8 +11,6 @@ LRMoE:
 
 # Some Personal Notes
 
-* 2020-10-16: [Developing an R Package: A Painful Experience](./pages/notes/rpackage/rpackage.html)
-
 * 2020-09-18: [Running R on Google Cloud Platform](./pages/notes/cloudr/cloudr.html)
 
 # Just for Fun
