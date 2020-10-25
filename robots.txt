@@ -1,4 +1,4 @@
-Sitemap: https://sparktseung.github.io/sitemap.xml
+Sitemap: https://work.sparktseung.com/sitemap.xml
 
 User-agent: *
 Disallow:
