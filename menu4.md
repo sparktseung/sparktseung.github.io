@@ -3,7 +3,7 @@
 @def date = Date(2020, 10, 24)
 @def rss = "This is a test page."
 
-@def tags = ["syntax", "code"]
+@def tags = ["all" ]
 
 # Working with code blocks
 

@@ -5,7 +5,7 @@
 html {
     font-family: Helvetica, Arial, sans-serif;
     font-size  : 17px;
-    color: #1c1c1c;
+    color: black; /* #1c1c1c; */
 }
 
 /* ==================================================================
@@ -141,7 +141,7 @@ html {
         margin: 10px 0; }
 
 .franklin-content a {
-    color: #004de6;
+    color: black; /* #004de6; */
     text-decoration: none; }
 
 .franklin-content a:hover {
