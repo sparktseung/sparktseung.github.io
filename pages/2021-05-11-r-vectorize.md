@@ -5,7 +5,7 @@
 
 @def tags = ["all", "notes", "R"]
 
-# Vectorizing a 
+# Vectorizing a Function in 
 
 I recently refereed a paper for an `R` package, where the function `base::Vectorize` is used.
 The documentation is given [here](https://stat.ethz.ch/R-manual/R-devel/library/base/html/Vectorize.html).
