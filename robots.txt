@@ -1,4 +1,4 @@
-Sitemap: sitemap.xml
+Sitemap: https://work.sparktseung.com/sitemap.xml
 
 User-agent: *
 Disallow:
