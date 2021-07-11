@@ -25,6 +25,6 @@ Latest:
 
 * [Running R on Google Cloud Platform](/pages/2020-09-19-cloudr)
 
-* [Vectorizng a Funtion in R](/pages/2021-05-11-r-vectorize)
+* [Vectorizing a Funtion in R](/pages/2021-05-11-r-vectorize)
 
 * [REI-UN: A case study of tactical asset allocation](/pages/2021-07-10-REI)
