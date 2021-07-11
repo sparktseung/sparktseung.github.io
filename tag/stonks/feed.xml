@@ -39,42 +39,4 @@
   </atom:author>
         
 </item>
-
-<item>
-  <title>
-    <![CDATA[  Vectorizing a function in R  ]]>
-  </title>
-  <link> https://work.sparktseung.com/pages/2021-05-11-r-vectorize/index.html </link>
-  <guid> https://work.sparktseung.com/pages/2021-05-11-r-vectorize/index.html </guid>
-  <description>
-    <![CDATA[  Vectorizing a function in R  ]]>
-  </description>  
-    
-  <pubDate>Tue, 11 May 2021 00:00:00 +0000</pubDate>  
-  
-  
-  <atom:author>
-    <atom:name>Spark Tseung</atom:name>
-  </atom:author>
-        
-</item>
-
-<item>
-  <title>
-    <![CDATA[  Running R on Google Cloud Platform  ]]>
-  </title>
-  <link> https://work.sparktseung.com/pages/2020-09-19-cloudr/index.html </link>
-  <guid> https://work.sparktseung.com/pages/2020-09-19-cloudr/index.html </guid>
-  <description>
-    <![CDATA[  How to set up an R environment on Google Cloud Platform  ]]>
-  </description>  
-    
-  <pubDate>Thu, 10 Sep 2020 00:00:00 +0000</pubDate>  
-  
-  
-  <atom:author>
-    <atom:name>Spark Tseung</atom:name>
-  </atom:author>
-        
-</item>
 </channel></rss>

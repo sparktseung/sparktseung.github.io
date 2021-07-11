@@ -23,6 +23,25 @@
 
 <item>
   <title>
+    <![CDATA[  REI-UN: A case study of tactical asset allocation  ]]>
+  </title>
+  <link> https://work.sparktseung.com/pages/2021-07-10-REI/index.html </link>
+  <guid> https://work.sparktseung.com/pages/2021-07-10-REI/index.html </guid>
+  <description>
+    <![CDATA[  REI-UN: A case study of tactical asset allocation  ]]>
+  </description>  
+    
+  <pubDate>Sat, 10 Jul 2021 00:00:00 +0000</pubDate>  
+  
+  
+  <atom:author>
+    <atom:name>Spark Tseung</atom:name>
+  </atom:author>
+        
+</item>
+
+<item>
+  <title>
     <![CDATA[  Vectorizing a function in R  ]]>
   </title>
   <link> https://work.sparktseung.com/pages/2021-05-11-r-vectorize/index.html </link>
