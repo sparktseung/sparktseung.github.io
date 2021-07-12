@@ -47,7 +47,11 @@ function hfun_recentblogposts(m::Vector{String})
     markdown *= "* [($(ele.date)) $(ele.title)](../$(ele.link))\n"
   end
 
-  return fd2html(markdown, internal=true)
+  markdown *= "\n"
+
+  return fd2html(markdown, internal=true, nop=true)
+
+
 end
 
 function lx_baz(com, _)
