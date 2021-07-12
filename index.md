@@ -23,8 +23,4 @@ available but is currently not regularly maintained (see [here](https://github.c
 
 Latest:
 
-* [Running R on Google Cloud Platform](/pages/2020-09-19-cloudr)
-
-* [Vectorizing a Funtion in R](/pages/2021-05-11-r-vectorize)
-
-* [REI-UN: A case study of tactical asset allocation](/pages/2021-07-10-REI)
+{{ recentblogposts 3 }}
