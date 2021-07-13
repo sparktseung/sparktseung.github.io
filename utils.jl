@@ -20,7 +20,7 @@ function hfun_recentblogposts(m::Vector{String})
   # for (k, i) in enumerate(idxs)
   #     fi = "/pages/" * splitext(list[i])[1] * "/"
   #     ptitle = pagevar(fi, :title)
-  #     write(io, """<li><a href="$fi"> $ptitle </a></li>\n""")
+  #     write(io, """<li><a href="$fi">"$ptitle"</a></li>\n""")
   # end
   # write(io, "</ul>")
   # return String(take!(io))
@@ -29,7 +29,9 @@ function hfun_recentblogposts(m::Vector{String})
   n = parse(Int64, m[1])
   list = readdir("pages")
   filter!(f -> endswith(f, ".md") && f != "index.md" , list)
-  markdown = ""
+  # markdown = ""
+  io = IOBuffer()
+  write(io, "<ul>")
   posts = []
   df = DateFormat("mm/dd/yyyy")
   for (k, post) in enumerate(list)
@@ -44,11 +46,13 @@ function hfun_recentblogposts(m::Vector{String})
   n = n >= 0 ? n : length(posts)+1
 
   for ele in sort(posts, by=x->x.date, rev=true)[1:min(length(posts), n)]
-    markdown *= "* [($(ele.date)) $(ele.title)](../$(ele.link))\n"
+    # markdown *= "* [($(ele.date)) $(ele.title)](../$(ele.link))\n"
+    write(io, """<li><a href="$(ele.link)"> ($(ele.date)) $(ele.title)</a></li>\n""")
   end
 
-  return fd2html(markdown, internal=true, nop=false)
-
+  # return fd2html(markdown, internal=true, nop=false)
+  write(io, "</ul>")
+  return String(take!(io))
 
 end
 

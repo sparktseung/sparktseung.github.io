@@ -1,5 +1,6 @@
 @def title = "Spark's Work"
 @def tags = ["all", "homepage"]
+@def date = Date(2021, 7, 12)
 
 # Acedemic Stuff
 
@@ -22,6 +23,4 @@ available but is currently not regularly maintained (see [here](https://github.c
 [All](/tag/notes)
 
 Latest:
-
 {{ recentblogposts 3 }}
-
