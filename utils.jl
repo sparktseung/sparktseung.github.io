@@ -56,6 +56,10 @@ function hfun_recentblogposts(m::Vector{String})
 
 end
 
+function hfun_lastcopyrightyear()
+  return year(now())
+end
+
 function lx_baz(com, _)
   # keep this first line
   brace_content = Franklin.content(com.braces[1]) # input string
